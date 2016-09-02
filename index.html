@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>v51（微我要）首页</title>
+	<title>V51微我要</title>
 	<meta name="format-detection" content="telephone=no"/>
 	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui" name="viewport" id="viewport" />
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -18,21 +18,28 @@
 			$(".register").tap(function(){
 				$(".gray").height(document.body.clientHeight);
 				$(".gray,.register_fc").show(200);
-				$(".gray,.register_fc").css({"z-index":"999999"});
+				$(".gray,.register_fc").css({"z-index":"9999"});
+				$('.seller s,.active s,.donghua').hide(200);
+				clearInterval(timer);
 			});
 			$(".register_close").tap(function(){
 				$(".gray,.register_fc").hide(200);
+				$('.seller s,.active s,.donghua').show(200);
+				timer=setInterval(fun,50)
 			});
 
 			/*弹出登录层*/
 			$(".login").tap(function(){
 				$(".gray").height(document.body.clientHeight);
 				$(".gray,.loginer").show(200);
-				
-				$(".gray,.loginer").css({"z-index":"999999"});
+				$(".gray,.loginer").css({"z-index":"9999"});
+				$('.seller s,.active s,.donghua').hide(200);
+				clearInterval(timer);
 			});
 			$(".login_close").tap(function(){
 				$(".gray,.loginer").hide(200);
+				$('.seller s,.active s,.donghua').show(200);
+				timer=setInterval(fun,50)
 			});
 			//弹出框背景禁止触屏 
 			mirrors=document.getElementById("mirrors");
@@ -303,7 +310,7 @@ var circle = document.getElementById('circle').getElementsByTagName('li');//获�
 </div>
 <!-- 版权 -->
 <footer>
-	Copyright © 2014 www.v51.tv    京ICP备13033246
+	Copyright © 2014 www.v51.com    京ICP备13033246899
 </footer>
 <!-- 浮层登陆注册-->
 <div class="gray" id="mirrors"></div>
