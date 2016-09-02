@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v51（微我要）首页</title>
+	<meta name="format-detection" content="telephone=no"/>
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no,minimal-ui" name="viewport" id="viewport" />
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="blank-translucent"/>
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script type="text/javascript" src="js/swipe.js"></script>
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*弹出注册层*/
+			$(".gray").height(document.body.clientHeight);
+			$(".register").tap(function(){
+				$(".gray").height(document.body.clientHeight);
+				$(".gray,.register_fc").show(200);
+				$(".gray,.register_fc").css({"z-index":"999999"});
+			});
+			$(".register_close").tap(function(){
+				$(".gray,.register_fc").hide(200);
+			});
+
+			/*弹出登录层*/
+			$(".login").tap(function(){
+				$(".gray").height(document.body.clientHeight);
+				$(".gray,.loginer").show(200);
+				
+				$(".gray,.loginer").css({"z-index":"999999"});
+			});
+			$(".login_close").tap(function(){
+				$(".gray,.loginer").hide(200);
+			});
+			//弹出框背景禁止触屏 
+			mirrors=document.getElementById("mirrors");
+			disablebk(mirrors);
+			function disablebk(elements){ 
+			if(document.addEventListener){
+			elements.addEventListener("touchmove",function(e){
+			// alert('sad');
+			var e = event || window.event || arguments.callee.caller.arguments[0]; 
+			e.preventDefault();
+			return false;
+			},false);
+			}
+			}
+			
+			
+			
+			var showMoreUlss=document.getElementById("showMore");
+			showMoreUlss.addEventListener("touchmove", function(e){
+			//disablebk(mirrors);
+			if(mirrors.style.display='block'){
+			//disablebk(mirrors);
+			// return false;
+			//e.preventDefault();
+			// e.stopPropagation();
+			//mirrors.onscroll;
+			}
+			
+			
+			}, true);
+			
+			/*近期入住滚动*/
+	var B=document.getElementById("box");  /*获取大盒子事件源*/
+	var L=document.getElementById("up");  /*获取左侧的盒子*/
+	var R=document.getElementById("down");  /*获取右侧盒子*/
+	R.innerHTML=L.innerHTML;
+	var timer=setInterval(fun,50);
+	function fun(){
+			/*B.scrollLeft++;*/
+
+			if(L.offsetHeight-B.scrollTop<=0)  /*判断是否到头 */  
+			{
+				/*alert("到头了");*/
+				B.scrollTop=0;
+			}
+			else
+			{
+				B.scrollTop++;
+			}
+		}
+
+			B.touchmove=function(){
+
+               clearInterval(timer);  
+         	}
+         	B.touchend=function(){
+
+         		timer=setInterval(fun, 50); /*要专一， 只羡鸳鸯不羡仙*/
+         	}
+
+		});
+	</script>
+</head>
+<body>
+
+<!-- 顶部 -->
+<header>
+	<ul>
+		<li class="register pops">
+			<a href="#">注&nbsp;&nbsp;册</a>
+		</li>
+		<li class="login pops"><a href="#">登&nbsp;&nbsp;录</a></li>
+		<li><a href="#">v51生态</a></li>
+	</ul>
+</header>
+
+<!-- banner部分 -->
+<div id="slider" class="swipe">
+	    <div class="swipe-wrap">
+	      <figure> <!-- 定义多媒体 -->
+	           <div class="wrap">
+	            <img src="image/banner.jpg">
+	           </div>
+	      </figure>
+	      <figure>
+	        <div class="wrap">
+	           <img src="image/banner.jpg">
+	        </div>
+	      </figure>
+	      <figure>
+	        <div class="wrap">
+	           <img src="image/banner.jpg">
+	        </div>
+	      </figure>
+	      <figure>
+	        <div class="wrap">
+	           <img src="image/banner.jpg">
+	        </div>
+	      </figure>
+	      <figure>
+	        <div class="wrap">
+	           <img src="image/banner.jpg">
+	        </div>
+	      </figure>
+	   	  <figure>
+	        <div class="wrap">
+	           <img src="image/banner.jpg">
+	        </div>
+	      </figure>
+	    </div>
+	  <!--圆点 -->
+	    <ol id="circle">
+	    	<li class="current"></li>
+	    	<li></li>
+	    	<li></li>
+	    	<li></li>
+	    	<li></li>
+	    	<li></li>
+	    </ol>
+  </div>
+  <script type="text/javascript">
+  var slider =
+  Swipe(document.getElementById('slider'), { // 最大盒子的id
+    auto: 3000,// 3秒 自动切换
+    continuous: true,
+    callback: function(pos) {  // 返回值  pos 是返回当前的索引值
+
+    	//console.log(pos);
+    	for(var i=0;i<=circle.length-1;i++)// 遍历数组
+    	{
+    		circle[i].className="";  //  其余的所有li 清除 current类
+    		circle[pos].className="current";// 只留下当前的这个li添加current
+    	}
+
+    
+    }
+  });
+var circle = document.getElementById('circle').getElementsByTagName('li');//获取li 的数组
+
+  </script>
+
+<!-- 导航模块 -->
+<nav>
+	<ul>
+		<li>
+			<a href="#">微生态群</a>
+		</li>
+		<li>
+			<a href="#">个人微商</a>
+		</li>
+		<li>
+			<a href="#">一手货源</a>
+		</li>
+		<li>
+			<a href="#">货源交流</a>
+		</li>
+		<li>
+			<a href="#">v51商城</a>
+		</li>
+		<li>
+			<a href="#">生态圈子</a>
+		</li>
+		<li>
+			<a href="#">自媒体</a>
+		</li>
+		<li>
+			<a href="#">新手上路</a>
+		</li>
+	</ul>
+</nav>
+
+<!-- 热点信息部分 -->
+
+<div class="donghua"></div>
+<div class="container">
+	<!-- 个人微商与商家 -->
+	<section>
+		<div class="insider personal ">
+			<div class="insiderin">
+				<div class="title">
+					<h3>个人微商用户</h3>
+				    <p>10256</p>
+				</div>
+				<s></s>
+			</div>
+			<!-- 热销商品和新品上架 -->
+			<div class="hot">
+				<div class="product">
+					<h2>热销商品</h2>
+					<img src="image/cp_03.png" width="44px">
+				</div>
+				<div class="product">
+					<h2>新品上架</h2>
+					<img src="image/cp_07.png" width="45px">
+				</div>
+			</div>
+		</div>
+		<div class="insider seller ">
+			<div class="insiderin">
+				<div class="title">
+					<h3>资源入住商家</h3>
+				    <p>10256</p>
+				</div>
+				<s></s>
+			</div>
+			<!-- 活跃微商 -->
+			<div class="active">
+				<div class="con">
+					<h2>活跃微商</h2>
+				    <img src="image/cp_05.png" width="74px">
+				</div>
+				<s></s>
+			</div>
+		</div>
+	</section>
+</div>
+<!-- 近期入住 -->
+<div class="newseller">
+	<h2>近期入住</h2>
+	<div class="newseller_in" id="box">
+		<div class="er">
+			<div id="up">
+				<ul>
+					<li>
+						<i></i>
+						<div class="details">
+							<span class="shop">
+								<h3>店铺名称</h3>
+								<p>商品数：<em>76</em></p>
+							</span>
+							<span class="into">
+								<p>12345</p>
+								<a href="#">进店逛逛</a>
+							</span>
+						</div>
+					</li>
+					<li>
+						<i></i>
+						<div class="details">
+							<span class="shop">
+								<h3>店铺名称</h3>
+								<p>商品数：<em>77</em></p>
+							</span>
+							<span class="into">
+								<p>12345</p>
+								<a href="#">进店逛逛</a>
+							</span>
+						</div>
+					</li>
+					<li>
+						<i></i>
+						<div class="details">
+							<span class="shop">
+								<h3>店铺名称</h3>
+								<p>商品数：<em>78</em></p>
+							</span>
+							<span class="into">
+								<p>12345</p>
+								<a href="#">进店逛逛</a>
+							</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="down"></div>
+		</div>
+	</div>
+</div>
+<!-- 版权 -->
+<footer>
+	Copyright © 2014 www.v51.tv    京ICP备13033246
+</footer>
+<!-- 浮层登陆注册-->
+<div class="gray" id="mirrors"></div>
+<!-- 登录 -->
+<div class="loginer">
+	<div class="login_close"></div>
+	<div class="loginerin">
+		<h2>v51微生态账户登陆</h2>
+		<div class="logo">
+			<img src="image/logo_03.png" width="154px" alt="">
+		</div>
+		<div class="user txt">
+			<input type="text" placeholder="请输入手机号">
+		</div>
+		<div class="password txt">
+       		<input type="password" placeholder="请输入密码" />
+    	</div>
+    	<div class="logins">
+    		<button>登&nbsp;录</button>
+    	</div>
+    	<div class="registers">
+    		<button>注&nbsp;册</button>
+    	</div>
+	</div>
+
+</div>
+<!-- 注册 -->
+<div class="register_fc" id="showMore">
+	<div class="register_close"></div>
+	<div class="register_fc_in">
+		<h2>v51微生态账户注册</h2>
+		<div class="register_logo">
+			<img src="image/logo_03.png" width="100px" alt="">
+		</div>
+		<div class="register_con">
+			<div>
+				<input type="text" placeholder="昵称:">
+			</div>
+			<div>
+				<input type="password" placeholder="密码:">
+			</div>
+			<div>
+				<input type="password" placeholder="确认密码:">
+			</div>
+			<div>
+				<input type="text" placeholder="手机号:">
+			</div>
+			<div class="dynamic">
+				<input type="text" placeholder="动态码:">
+				<button>获取</button>
+			</div>
+		
+		
+			<div>
+				<button>注&nbsp;册</button>
+			</div>
+			<div>
+				<a>已有账号直接登录</a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

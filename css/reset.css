@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+/*css reset*/
+html{font-size:10px;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td ,figure{ margin:0; padding:0; }
+body { color:#666;background-color:#eee;line-height:20px; font-family:Arial,"Microsoft YaHei";min-width:290px;}
+fieldset, img { border:0; display:block;}
+ol, ul { list-style:none; }
+h1, h2, h3, h4, h5, h6{ font-size:100%;font-weight:normal; }
+em,s,i{ font-style:normal; }
+input, button, select, textarea { border:0;outline:none; } 
+textarea { resize:none; }/*禁用了文本的拖拉，尤其在谷歌下*/
+p{text-align:justify; text-justify:distribute;} /*使文本段落左右两边对
+齐*/
+a{text-decoration:none;color:#666;}
+a:hover{color:#333;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+
+/*清除浮动*/
+.clearfix:before,.clearfix:after{display:table;content:"";}
+.clearfix:after{clear:both;}
+.clearfix{zoom:1;}
+
+*::selection {
+    background: none repeat scroll 0 0 #1abc9c;
+    color: white;}
+*::-moz-selection {
+    background: none repeat scroll 0 0 #1abc9c;
+    color: white;}
+/*overflow: hidden;text-overflow: ellipsis;white-space: nowrap;*/
+
+
+/* 禁用iPhone中Safari的字号自动调整 */
+html {
+    -webkit-text-size-adjust:100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* 设置HTML5元素为块 */
+article， aside， details， figcaption， figure， footer， header， hgroup， menu， nav， section {
+display： block;
+}
+
+/* 设置图片视频等自适应调整 */
+img {
+max-width: 100%;
+height: auto;
+width: auto\9; /* ie8 */
+}
+.video embed, .video object, .video iframe {
+width: 100%;
+height: auto;
+}
+
+a,button,input{-webkit-tap-highlight-color:rgba(0,0,0,0);}/* 1.去除android a/button/input标签被点击时产生的边框 2.去除ios a标签被点击时产生的半透明灰色背景 */
+
+/*去除input默认样式*/
+input {-webkit-appearance:none; }
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input{-webkit-appearance:none;}
+
